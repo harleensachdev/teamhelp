@@ -1,0 +1,16 @@
+{% extends "base.html" %} <!-- This page uses "base.html" as its foundation -->
+{% block title %}Login{% endblock %} <!-- Sets the title for this page -->
+{% block content %}
+<h2>Login</h2> <!-- A header for the page -->
+<form method="POST"> <!-- A form to send data to the server -->
+    <label for="email">Email</label> <!-- Label for the email field -->
+    <input type="email" id="email" name="email" placeholder="Enter your email" required> <!-- Input for email -->
+    
+    <label for="password">Password</label> <!-- Label for the password field -->
+    <input type="password" id="password" name="password" placeholder="Enter your password" required> <!-- Input for password -->
+    
+    <button type="submit">Login</button> <!-- Button to log in -->
+    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p> <!-- Link to the signup page -->
+</form>
+{% endblock %}
+

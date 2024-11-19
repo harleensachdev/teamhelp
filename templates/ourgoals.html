@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Our Goals{% endblock %}
+{% block content %}
+<section class="help-container">
+    <h1>How This App Supports the Sustainable Development Goals (SDGs)</h1>
+    <p>Our app is designed with inclusivity, equality, and sustainability at its core. Here’s how each feature aligns with specific SDGs:</p>
+
+    <!-- SDG Cards Section -->
+    <div class="sdg-cards">
+        <!-- SDG 8 Card -->
+        <div class="sdg-card">
+            <img src="{{ url_for('static', filename='images/sdg8.png') }}" alt="SDG 8 Icon">
+            <h3>SDG 8: Decent Work and Economic Growth</h3>
+            <p>Simplifies scheduling and ensures accessibility, promoting inclusive economic opportunities and teamwork.</p>
+        </div>
+
+        <!-- SDG 5 Card -->
+        <div class="sdg-card">
+            <img src="{{ url_for('static', filename='images/sdg5.png') }}" alt="SDG 5 Icon">
+            <h3>SDG 5: Gender Equality</h3>
+            <p>Empowers diverse teams with anonymous brainstorming, reducing biases and ensuring equal contribution.</p>
+        </div>
+
+        <!-- SDG 10 Card -->
+        <div class="sdg-card">
+            <img src="{{ url_for('static', filename='images/sdg10.png') }}" alt="SDG 10 Icon">
+            <h3>SDG 10: Reduced Inequalities</h3>
+            <p>Fosters inclusion by providing anonymous sharing options and fair participation tracking during meetings.</p>
+        </div>
+
+        <!-- SDG 16 Card -->
+        <div class="sdg-card">
+            <img src="{{ url_for('static', filename='images/sdg16.png') }}" alt="SDG 16 Icon">
+            <h3>SDG 16: Justice and Accountability</h3>
+            <p>Promotes accountability through weekly status reports, ensuring transparency and trust within teams.</p>
+        </div>
+    </div>
+
+    <!-- Additional Information Section -->
+    <section class="more-info">
+        <h2>Explore Our Features</h2>
+        <p>Learn how each functionality of this app directly supports the SDGs:</p>
+        <ul>
+            <li><strong>Scheduling Meetings:</strong> Simplifies cross-timezone collaboration (SDG 8).</li>
+            <li><strong>Anonymous Idea Sharing:</strong> Reduces power imbalances and bias (SDG 5, SDG 10).</li>
+            <li><strong>Participation Tracking:</strong> Ensures balanced contributions in discussions (SDG 16).</li>
+            <li><strong>Meeting Summaries:</strong> Fosters knowledge sharing and continuity (SDG 17).</li>
+        </ul>
+        <a href="/features" class="btn btn-primary">Explore All Features</a>
+    </section>
+</section>
+{% endblock %}

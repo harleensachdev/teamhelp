@@ -1,0 +1,13 @@
+{% extends "base.html" %} <!-- Uses the base layout -->
+{% block title %}Home{% endblock %} <!-- Sets the page title -->
+{% block content %}
+<h2>Welcome, {{ display_name }}!</h2> <!-- Displays the user's name -->
+<p>Here are your options:</p>
+<ul>
+    <li><button onclick="window.location.href='/create-group'">Create a Group</button></li> <!-- Button to create a group -->
+    <li><button onclick="window.location.href='/join-group'">Join a Group</button></li> <!-- Button to join a group -->
+</ul>
+<a href="/ourgoals">
+    <button class="btn btn-ourgoals">Our Goals</button> <!-- Button linking to the "Our Goals" page -->
+</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This tells the browser the type of document it is -->
+    <meta charset="UTF-8"> <!-- Sets the language for characters, like letters and symbols -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page look good on phones and computers -->
+    <title>{% block title %}Improved Teamwork App{% endblock %}</title> <!-- The page title will change for each page -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Connects to the page's styling (CSS) -->
+    <script src="{{ url_for('static', filename='js/accessibility.js') }}" defer></script> <!-- Adds a script to make the website easier to use -->
+</head>
+<body>
+    <nav>
+        <h1>Improved Teamwork App</h1> <!-- The big title at the top of the page -->
+    </nav>
+    <div class="container">
+        <!-- This checks if there are any messages to show to the user -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li> <!-- Shows each message in a list -->
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %} <!-- This is where each page will add its unique content -->
+    </div>
+</body>
+</html>
+

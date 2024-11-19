@@ -1,0 +1,18 @@
+{% extends "base.html" %} <!-- Uses "base.html" as its base -->
+{% block title %}Signup{% endblock %} <!-- Title of this page -->
+{% block content %}
+<h2>Create an Account</h2>
+<form method="POST"> <!-- Form to collect signup details -->
+    <label for="display_name">Display Name</label>
+    <input type="text" id="display_name" name="display_name" placeholder="Enter your display name" required> <!-- Input for a username -->
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required> <!-- Input for email -->
+    
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Create a password" required> <!-- Input for password -->
+    
+    <button type="submit">Sign Up</button> <!-- Button to sign up -->
+    <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p> <!-- Link to login page -->
+</form>
+{% endblock %}
