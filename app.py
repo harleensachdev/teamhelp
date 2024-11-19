@@ -1,44 +1,49 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 
-app = Flask(__name__)  # This creates the web app
-app.secret_key = "your_secret_key"  # A secret key to keep data safe
+app = Flask(__name__)
+app.secret_key = "your_secret_key"
 
 # Mock user database
-users = {}  # A dictionary to store users' info (like a list of accounts)
+users = {}
 
 @app.route('/')
 def index():
-    return redirect(url_for('login'))  # Redirects to the login page when someone visits the home page
+    return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':  # If the user is sending data (logging in)
-        email = request.form['email']  # Get the email from the form
-        password = request.form['password']  # Get the password from the form
-        if email in users and users[email]['password'] == password:  # Check if the email and password match
-            return redirect(url_for('home', display_name=users[email]['display_name']))  # Go to the home page
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        if email in users and users[email]['password'] == password:
+            return redirect(url_for('home', display_name=users[email]['display_name']))
         else:
-            flash('Invalid email or password', 'danger')  # Show an error message
-    return render_template('login.html')  # Show the login page
+            flash('Invalid email or password', 'danger')
+    return render_template('login.html')
+
+@app.route('/ourgoals')
+def help():
+    return render_template('ourgoals.html')
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if request.method == 'POST':  # If the user is creating an account
-        email = request.form['email']  # Get the email from the form
-        password = request.form['password']  # Get the password from the form
-        display_name = request.form['display_name']  # Get the display name
-        if email in users:  # Check if the email is already in use
-            flash('Email already exists', 'danger')  # Show an error message
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        display_name = request.form['display_name']
+        if email in users:
+            flash('Email already exists', 'danger')
         else:
-            users[email] = {'password': password, 'display_name': display_name}  # Save the user's info
-            flash('Account created successfully', 'success')  # Show a success message
-            return redirect(url_for('login'))  # Go back to the login page
-    return render_template('signup.html')  # Show the signup page
+            users[email] = {'password': password, 'display_name': display_name}
+            flash('Account created successfully', 'success')
+            return redirect(url_for('login'))
+    return render_template('signup.html')
 
 @app.route('/home')
 def home():
-    display_name = request.args.get('display_name', 'User')  # Get the user's name, or use "User" if not provided
-    return render_template('home.html', display_name=display_name)  # Show the home page with the user's name
+    display_name = request.args.get('display_name', 'User')
+    return render_template('home.html', display_name=display_name)
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Start the app in debug mode (so errors are easier to find)
+    app.run(debug=True)
