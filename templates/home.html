@@ -4,9 +4,24 @@
 <h2>Welcome, {{ display_name }}!</h2> <!-- Displays the user's name -->
 <p>Here are your options:</p>
 <ul>
-    <li><button onclick="window.location.href='/create-group'">Create a Group</button></li> <!-- Button to create a group -->
+    <li><form method="POST">
+        <button type="submit">Create a Group</button></li> <!-- Button to create a group -->
+    </form>    
     <li><button onclick="window.location.href='/join-group'">Join a Group</button></li> <!-- Button to join a group -->
 </ul>
+{% if group %}
+    <p>Your groups:</p>
+    <ul>
+        {% for group in groups %}
+            <li style="margin:20px; padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);">
+                {{group}}
+                <button onclick="window.location.href='/grouphome?email={{ email }}&group_code={{ group }}'">Join</button>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No groups right now</p>
+{% endif %}
 <a href="/ourgoals">
     <button class="btn btn-ourgoals">Our Goals</button> <!-- Button linking to the "Our Goals" page -->
 </a>

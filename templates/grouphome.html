@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Your Group{% endblock %}
+{% block content %}
+<h1 style="text-align:center;">Your Group</h1>
+<div>
+    Your code is: {{ group_code }}
+</div>
+<button style="position:fixed; right:20px; bottom:20px;">Customise group</button>
+
+<button style="position:fixed; left:20px; bottom:20px;" onclick="window.location.href='/home?email={{ email }}'">Back to home</button>
+{% endblock %}
